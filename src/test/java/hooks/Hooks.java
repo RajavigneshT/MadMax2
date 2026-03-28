@@ -14,6 +14,12 @@ public class Hooks {
     public void setup() {
         System.out.println("Before Scenario");
     }
+    @Before(order=0)
+    public void cleanScreenShotFolder(){
+        ScreenshotUtil.deleteOldScreenshots();
+
+    }
+
 
     @After
     public void tearDown() {

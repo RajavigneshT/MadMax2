@@ -28,11 +28,25 @@ public class ScreenshotUtil {
 
         return filePath;
     }
-    // ✅ NEW METHOD → For Cucumber Report Attachment
     public static byte[] captureScreenshotForReport(WebDriver driver) {
 
         TakesScreenshot ts = (TakesScreenshot) driver;
         return ts.getScreenshotAs(OutputType.BYTES);
+    }
+    public static void deleteOldScreenshots() {
+
+        File folder = new File(System.getProperty("user.dir") + "/screenshots");
+
+        if (folder.exists()) {
+
+            File[] files = folder.listFiles();
+
+            if (files != null) {
+                for (File file : files) {
+                    file.delete();
+                }
+            }
+        }
     }
 
 }
